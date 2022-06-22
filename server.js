@@ -1,0 +1,49 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+ const userRoutes = require('./routes/user.routes');
+ const postRoutes = require('./routes/post.routes');
+ const conversationRoute = require('./routes/conversation');
+ const messageRoute = require('./routes/messages')
+require('dotenv').config({path: './config/.env'});
+require("./config/db");
+const {checkUser , requireAuth} = require('./middleware/auth.middleware');
+
+const cors = require('cors');
+
+const app = express();
+
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+}
+app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+
+//jwt 
+app.get('*', checkUser); // * = tout, donc a chaque fois qu'il y a une requete tu me declache notre fonction checkuser qui va verif le cookie de l'utilisateur
+app.get('/jwtid', requireAuth, (req,res) => { 
+    res.status(200).send(res.locals.user._id);
+
+
+
+});
+
+//routes 
+
+ app.use('/api/user', userRoutes)
+app.use('/api/post', postRoutes)
+app.use('/api/conversations', conversationRoute);
+app.use('/api/messages', messageRoute);
+//server
+app.listen(process.env.PORT, () => {
+
+    console.log(`listening on port ${process.env.PORT}`)
+})

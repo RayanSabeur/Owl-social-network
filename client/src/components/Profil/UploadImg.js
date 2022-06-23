@@ -7,8 +7,8 @@ import { uploadPicture } from '../../actions/user.action';
 
 const UploadImg = () => {
 const [file, setFile] = useState();
-const dispatch = useDispatch(); // va nous permettre d'envoyer notre image en back
-const userData = useSelector((state) => state.userReducer)// on se recup le user dans notr store
+const dispatch = useDispatch();
+const userData = useSelector((state) => state.userReducer)
 const mystyle = {
   background: '#1876F3',
   color: "white"

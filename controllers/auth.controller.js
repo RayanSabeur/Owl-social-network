@@ -6,7 +6,7 @@ const maxAge =  3 * 24 * 60 * 60 * 1000;
 
 const createToken = (id) => { //constante pour creer notre token
 
-    return jwt.sign({id}, process.env.TOKEN_SECRET, { //variable d'environement qu'on set dans le .env 
+    return jwt.sign({id}, process.env.TOKEN_SECRET, { 
 
         expiresIn: maxAge //expiration du token
     })
@@ -33,8 +33,8 @@ module.exports.signIn = async (req,res) => {
 
     try {
 
-        const user = await UserModel.login(email , password); // on recup email password et on va check dans la bd si cet utilisiteur existe, on le stock dans user a loccaz
-        const token = createToken(user._id); // on se creer un token, en y stockant l'id de notre user, et notre clé secrete
+        const user = await UserModel.login(email , password); 
+        const token = createToken(user._id); 
         res.cookie('jwt', token , {httpOnly: true, maxAge})
         res.status(200).json({user:user._id})
     } catch (err) {

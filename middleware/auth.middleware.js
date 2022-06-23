@@ -8,9 +8,9 @@ module.exports.checkUser = (req,res,next) => {
     const token = req.cookies.jwt;
 
     if(token) {
-        jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => { // on lui passe notre clé secrete et on va verifier le token
+        jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => { 
 
-            if(err) { //si le token est pas bon/suspect on lui retire
+            if(err) { 
                 res.locals.user = null;
              // res.cookies('jwt', '', {maxAge: 1});
                 next()

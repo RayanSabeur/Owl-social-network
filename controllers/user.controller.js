@@ -32,7 +32,7 @@ module.exports.getAllUsers = async (req, res) => {
         },
         { new: true, upsert: true, setDefaultsOnInsert: true }
       )
-        .then((docs) => { //vaut mieux utiliser un .then sous mongoose 6 a ce moment la
+        .then((docs) => {
                res.send(docs);
           if (err) return res.status(500).send({ message: err });
         }

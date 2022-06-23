@@ -8,7 +8,7 @@ router.post('/', upload.single("file"), postController.createPost);
 router.put('/:id', postController.updatePost);
 router.delete('/:id', postController.deletePost);
 router.get('/profile/:pseudo' , postController.getUserPost)
-router.patch('/like-post/:id', postController.likePost); //.patch sert a intervenir dans un array qui est a l'interrieur de notre element (le tableau des likes de notre user ici)
+router.patch('/like-post/:id', postController.likePost); 
 router.patch('/unlike-post/:id', postController.unlikePost);
 
 

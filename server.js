@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 
 //jwt 
-app.get('*', checkUser); // * = tout, donc a chaque fois qu'il y a une requete tu me declache notre fonction checkuser qui va verif le cookie de l'utilisateur
+app.get('*', checkUser); // 
 app.get('/jwtid', requireAuth, (req,res) => { 
     res.status(200).send(res.locals.user._id);
 

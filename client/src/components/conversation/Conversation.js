@@ -8,9 +8,9 @@ import { UidContext } from '../AppContext';
 
 const Conversation = ({conversation, currentUser }) => {
 
-  const [user, setUser] = useState(null) 
+  const [user, setUser] = useState(null);
 
-  let chemin = "/profile/"
+  let chemin = "/profile/";
 
   useEffect(()=> {
 

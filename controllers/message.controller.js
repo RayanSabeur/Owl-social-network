@@ -16,7 +16,7 @@ try {
     res.status(500).json(err)
 }
 
-}
+};
 
 module.exports.getMessageUser = async (req, res) => {
 
@@ -33,4 +33,4 @@ module.exports.getMessageUser = async (req, res) => {
 
         res.status(500).json(err)
     }
-}
+};

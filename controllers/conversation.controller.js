@@ -36,7 +36,7 @@ module.exports.GetUserConv = async (req, res) => {
 
         res.status(500).json(err)
     }
-}
+};
 
 module.exports.FindConv = async (req, res) => {
 try {
@@ -49,4 +49,4 @@ res.status(200).json(conversation)
 {
     res.status(500).json(err)
 }
-}
+};
